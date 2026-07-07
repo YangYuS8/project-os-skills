@@ -17,6 +17,40 @@ Product positioning
 
 The goal is to make agents think like a small product-engineering team: product manager, architect, engineer, SRE, QA, security reviewer, and knowledge curator.
 
+## Quick install
+
+### Install into the current project for mainstream agents
+
+Run this inside the project you want agents to work on:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/YangYuS8/project-os-skills/main/scripts/install.sh | bash -s -- --mode project --dest . --agents all
+```
+
+This installs project-local guidance for common agent styles, including `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `CODEX.md`, Cursor rule files, Windsurf rule files, and `OPENCODE.md`.
+
+### Install native skills for Hermes-like agents
+
+```bash
+git clone https://github.com/YangYuS8/project-os-skills.git
+cd project-os-skills
+bash scripts/install.sh --mode skills --target hermes
+```
+
+By default, this copies skills to:
+
+```text
+~/.hermes/skills
+```
+
+### Install both
+
+```bash
+bash scripts/install.sh --mode all --dest /path/to/project --agents all
+```
+
+See [`docs/quickstart.md`](docs/quickstart.md), [`docs/agent-compatibility.md`](docs/agent-compatibility.md), and [`docs/usage-with-hermes.md`](docs/usage-with-hermes.md).
+
 ## Why this exists
 
 Many coding agents can generate code quickly, but they often skip the decisions that keep a project maintainable:
@@ -38,6 +72,20 @@ Project OS Skills are designed to slow the agent down at the right moments, forc
 ```text
 project-os-skills/
 ├── README.md
+├── PROJECT_RULES.template.md
+├── scripts/
+│   └── install.sh
+├── adapters/
+│   ├── README.md
+│   └── project/
+│       ├── PROJECT_OS_AGENT.md
+│       ├── AGENTS.md
+│       ├── CLAUDE.md
+│       ├── GEMINI.md
+│       ├── CODEX.md
+│       ├── OPENCODE.md
+│       ├── cursor-rules.md
+│       └── windsurf-adapter.md
 ├── skills/
 │   ├── project-os-thinking/
 │   │   └── SKILL.md
@@ -65,6 +113,8 @@ project-os-skills/
 ├── docs/
 │   ├── philosophy.md
 │   ├── skill-pack-design.md
+│   ├── quickstart.md
+│   ├── agent-compatibility.md
 │   └── usage-with-hermes.md
 └── examples/
     ├── README.md
@@ -121,6 +171,15 @@ Use this after incidents, difficult debugging sessions, or repeated mistakes.
 
 It makes the agent capture symptoms, impact, root cause, fixes, verification, and prevention as reusable knowledge.
 
+## Agent support strategy
+
+Project OS Skills supports two integration modes:
+
+1. **Native skill mode**: copy `skills/*` into a skills directory, currently with a Hermes default.
+2. **Project adapter mode**: install `.project-os/` and project instruction files so mainstream agents can discover and apply the methodology inside a repository.
+
+The adapter files include an auto-use matrix so agents can choose the right skill based on task type.
+
 ## Design principles
 
 1. **Code is only one layer of the system.**
@@ -132,11 +191,7 @@ It makes the agent capture symptoms, impact, root cause, fixes, verification, an
 7. **Tests and postmortems are assets.**
 8. **Templates are scaffolding, not filler.**
 
-## How to use with Hermes
-
-Copy or sync the `skills/` directories into your Hermes skills directory, or reference this repository as a skill pack if your Hermes setup supports remote skill loading.
-
-Useful prompts:
+## Useful prompts
 
 ```text
 Use project-os-thinking to design this project before writing code.
@@ -169,8 +224,6 @@ Use qa-as-asset to create durable tests and regression checks.
 ```text
 Use postmortem-knowledge-base to turn this incident into reusable knowledge.
 ```
-
-See [`docs/usage-with-hermes.md`](docs/usage-with-hermes.md) for more details.
 
 ## License
 
