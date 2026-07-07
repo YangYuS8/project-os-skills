@@ -19,33 +19,22 @@
 
 目标是让 Agent 不只是“会写代码”，而是更像一个小型产品工程团队：产品经理、架构师、工程师、SRE、QA、安全审查者和知识库维护者。
 
-## 快速安装
+## 安装
 
-### 最简单：一句话让 Agent 自己安装
+### 给人类用户
 
-在你想增强的项目里，把这段提示词发给 Coding Agent：
+**推荐：让你的 Coding Agent 自己安装。**
+
+在你想增强的项目中，把下面这段话发给 Codex、Claude Code、Cursor、Windsurf、OpenCode、Gemini CLI、Hermes 或其他 Coding Agent：
 
 ```text
-请把 Project OS Skills 安装到当前仓库。
-
-官方仓库：
-https://github.com/YangYuS8/project-os-skills
-
-目标：
-- 把 Project OS 的项目级上下文安装到当前仓库
-- 启用主流 Agents 的适配文件
-- 不要直接覆盖已有的 Agent 指令文件，遇到已有文件要保留副本或生成示例文件
-- 安装完成后，检查 PROJECT_RULES.md，并帮我根据当前项目补全项目事实和规则
-
-优先使用这个命令：
-curl -fsSL https://raw.githubusercontent.com/YangYuS8/project-os-skills/main/scripts/install.sh | bash -s -- --mode project --dest . --agents all
-
-执行命令前，先简要说明会创建或修改哪些文件。安装完成后，总结安装了哪些文件，并建议下一步如何编辑 PROJECT_RULES.md。
+请按照下面这份安装指南，把 Project OS Skills 安装并配置到当前项目：
+https://raw.githubusercontent.com/YangYuS8/project-os-skills/refs/heads/main/docs/guide/installation.md
 ```
 
-更多可直接复制的提示词见 [`docs/install-with-agent.md`](docs/install-with-agent.md)。
+这是推荐流程：Agent 会阅读完整安装指南，选择合适的安装模式，执行安装器，验证结果，并帮你根据当前项目补全 `PROJECT_RULES.md`。
 
-### 手动：安装到当前项目，供主流 Agents 使用
+### 直接安装到当前项目
 
 在你希望 Agent 参与开发的项目根目录执行：
 
@@ -75,7 +64,7 @@ PROJECT_RULES.md
 
 其中 `.project-os/` 存放通用方法论和模板，`PROJECT_RULES.md` 用来记录当前项目自己的事实、约束和规则。
 
-### 手动：安装为 Hermes 类 Agent 的原生 Skills
+### 安装为 Hermes 类 Agent 的原生 Skills
 
 ```bash
 git clone https://github.com/YangYuS8/project-os-skills.git
@@ -103,6 +92,7 @@ bash scripts/install.sh --mode all --dest /path/to/project --agents all
 
 更多说明见：
 
+- [`docs/guide/installation.md`](docs/guide/installation.md)
 - [`docs/quickstart.md`](docs/quickstart.md)
 - [`docs/install-with-agent.md`](docs/install-with-agent.md)
 - [`docs/agent-compatibility.md`](docs/agent-compatibility.md)
@@ -175,7 +165,9 @@ project-os-skills/
 │   ├── quickstart.md
 │   ├── install-with-agent.md
 │   ├── agent-compatibility.md
-│   └── usage-with-hermes.md
+│   ├── usage-with-hermes.md
+│   └── guide/
+│       └── installation.md
 └── examples/
     ├── README.md
     └── autoqa-project-os-review.md
