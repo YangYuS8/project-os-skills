@@ -2,7 +2,29 @@
 
 This document describes how to use Project OS Skills with Hermes or a similar AI agent system.
 
-## Basic setup
+## Quick setup
+
+Use the installer:
+
+```bash
+git clone https://github.com/YangYuS8/project-os-skills.git
+cd project-os-skills
+bash scripts/install.sh --mode skills --target hermes
+```
+
+By default, this copies all skill folders into:
+
+```text
+~/.hermes/skills
+```
+
+Override the target directory when needed:
+
+```bash
+bash scripts/install.sh --mode skills --dest /custom/hermes/skills
+```
+
+## Manual setup
 
 Copy the `skills/` directories into the location where Hermes loads skills.
 
@@ -20,6 +42,16 @@ cp -r skills/postmortem-knowledge-base ~/.hermes/skills/
 ```
 
 Adjust the target path according to your actual Hermes installation.
+
+## Project-local setup
+
+For a specific repository, install Project OS context files too:
+
+```bash
+bash scripts/install.sh --mode project --dest /path/to/project --agents all
+```
+
+This gives Hermes and other agents project-local guidance through `PROJECT_RULES.md`, `.project-os/`, and adapter files.
 
 ## Recommended first prompts
 
