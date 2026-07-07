@@ -21,7 +21,31 @@
 
 ## 快速安装
 
-### 安装到当前项目，供主流 Agents 使用
+### 最简单：一句话让 Agent 自己安装
+
+在你想增强的项目里，把这段提示词发给 Coding Agent：
+
+```text
+请把 Project OS Skills 安装到当前仓库。
+
+官方仓库：
+https://github.com/YangYuS8/project-os-skills
+
+目标：
+- 把 Project OS 的项目级上下文安装到当前仓库
+- 启用主流 Agents 的适配文件
+- 不要直接覆盖已有的 Agent 指令文件，遇到已有文件要保留副本或生成示例文件
+- 安装完成后，检查 PROJECT_RULES.md，并帮我根据当前项目补全项目事实和规则
+
+优先使用这个命令：
+curl -fsSL https://raw.githubusercontent.com/YangYuS8/project-os-skills/main/scripts/install.sh | bash -s -- --mode project --dest . --agents all
+
+执行命令前，先简要说明会创建或修改哪些文件。安装完成后，总结安装了哪些文件，并建议下一步如何编辑 PROJECT_RULES.md。
+```
+
+更多可直接复制的提示词见 [`docs/install-with-agent.md`](docs/install-with-agent.md)。
+
+### 手动：安装到当前项目，供主流 Agents 使用
 
 在你希望 Agent 参与开发的项目根目录执行：
 
@@ -51,7 +75,7 @@ PROJECT_RULES.md
 
 其中 `.project-os/` 存放通用方法论和模板，`PROJECT_RULES.md` 用来记录当前项目自己的事实、约束和规则。
 
-### 安装为 Hermes 类 Agent 的原生 Skills
+### 手动：安装为 Hermes 类 Agent 的原生 Skills
 
 ```bash
 git clone https://github.com/YangYuS8/project-os-skills.git
@@ -80,6 +104,7 @@ bash scripts/install.sh --mode all --dest /path/to/project --agents all
 更多说明见：
 
 - [`docs/quickstart.md`](docs/quickstart.md)
+- [`docs/install-with-agent.md`](docs/install-with-agent.md)
 - [`docs/agent-compatibility.md`](docs/agent-compatibility.md)
 - [`docs/usage-with-hermes.md`](docs/usage-with-hermes.md)
 
@@ -148,6 +173,7 @@ project-os-skills/
 │   ├── philosophy.md
 │   ├── skill-pack-design.md
 │   ├── quickstart.md
+│   ├── install-with-agent.md
 │   ├── agent-compatibility.md
 │   └── usage-with-hermes.md
 └── examples/
