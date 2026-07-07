@@ -1,5 +1,7 @@
 # Project OS Skills
 
+English | [简体中文](README.zh-CN.md)
+
 A reusable **Project OS skill pack** for AI agents.
 
 This repository teaches agents to develop software as a full product-engineering operating system, not merely as code generation. The intended workflow is:
@@ -72,7 +74,9 @@ Project OS Skills are designed to slow the agent down at the right moments, forc
 ```text
 project-os-skills/
 ├── README.md
+├── README.zh-CN.md
 ├── PROJECT_RULES.template.md
+├── LICENSE
 ├── scripts/
 │   └── install.sh
 ├── adapters/
@@ -227,4 +231,4 @@ Use postmortem-knowledge-base to turn this incident into reusable knowledge.
 
 ## License
 
-No license has been selected yet. Until a license is added, all rights are reserved by the repository owner.
+This project is licensed under the [Apache License 2.0](LICENSE).
