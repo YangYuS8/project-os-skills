@@ -10,8 +10,13 @@ Example:
 
 ```bash
 cp -r skills/project-os-thinking ~/.hermes/skills/
+cp -r skills/moat-first-ai-product ~/.hermes/skills/
 cp -r skills/adr-driven-architecture ~/.hermes/skills/
+cp -r skills/clean-boundary-engineering ~/.hermes/skills/
+cp -r skills/blackbox-contract-security ~/.hermes/skills/
 cp -r skills/runbook-first-ops ~/.hermes/skills/
+cp -r skills/qa-as-asset ~/.hermes/skills/
+cp -r skills/postmortem-knowledge-base ~/.hermes/skills/
 ```
 
 Adjust the target path according to your actual Hermes installation.
@@ -24,10 +29,16 @@ Adjust the target path according to your actual Hermes installation.
 Use project-os-thinking to help me design this project before writing code.
 ```
 
+### AI product or agent workflow
+
+```text
+Use moat-first-ai-product to separate public model capability from the real product moat.
+```
+
 ### New feature
 
 ```text
-Use project-os-thinking to review this feature idea and identify product positioning, moat, architecture, QA, and operational implications.
+Use project-os-thinking and clean-boundary-engineering to review this feature idea and implementation plan.
 ```
 
 ### Architecture choice
@@ -36,10 +47,28 @@ Use project-os-thinking to review this feature idea and identify product positio
 Use adr-driven-architecture to compare these options and write an ADR.
 ```
 
+### Sensitive fields or hidden prompts
+
+```text
+Use blackbox-contract-security to design public/admin projections and leakage tests.
+```
+
 ### Deployment or debugging
 
 ```text
 Use runbook-first-ops to produce a safe diagnostic, deployment, verification, and rollback plan.
+```
+
+### Testing
+
+```text
+Use qa-as-asset to create a reusable smoke suite and regression checklist.
+```
+
+### Incident learning
+
+```text
+Use postmortem-knowledge-base to turn this issue into a KB entry and follow-up tasks.
 ```
 
 ## Suggested Hermes behavior
@@ -58,6 +87,22 @@ For significant work, Hermes should first produce:
 
 Then it can write code.
 
+## Practical workflow
+
+A good session often looks like this:
+
+```text
+1. project-os-thinking
+2. moat-first-ai-product if AI/product moat matters
+3. adr-driven-architecture
+4. clean-boundary-engineering
+5. blackbox-contract-security if sensitive internals exist
+6. implementation
+7. qa-as-asset
+8. runbook-first-ops
+9. postmortem-knowledge-base after incidents
+```
+
 ## Good usage examples
 
 ```text
@@ -69,24 +114,15 @@ I am choosing between SQLite and PostgreSQL for this early-stage project. Use AD
 ```
 
 ```text
+This API returns generated task data. Use blackbox-contract-security to decide public and admin fields.
+```
+
+```text
 I need to deploy this service to a VPS with Nginx and pm2. Use runbook-first ops and include rollback.
 ```
 
 ```text
 Review this existing codebase as a Project OS: product, moat, architecture, engineering boundaries, operations, QA, and knowledge base.
-```
-
-## Practical workflow
-
-A good session often looks like this:
-
-```text
-1. project-os-thinking
-2. adr-driven-architecture
-3. implementation
-4. runbook-first-ops
-5. QA checklist
-6. postmortem or knowledge-base update
 ```
 
 ## Customization
