@@ -21,7 +21,31 @@ The goal is to make agents think like a small product-engineering team: product 
 
 ## Quick install
 
-### Install into the current project for mainstream agents
+### Easiest: ask your agent to install it
+
+Copy this into your coding agent inside the project you want to enhance:
+
+```text
+Install Project OS Skills into this repository.
+
+Use the official repository:
+https://github.com/YangYuS8/project-os-skills
+
+Goal:
+- install project-local Project OS context into the current repository
+- enable adapters for mainstream agents
+- do not overwrite existing instruction files without preserving a copy
+- after installation, inspect PROJECT_RULES.md and help me fill it with project-specific facts
+
+Preferred command:
+curl -fsSL https://raw.githubusercontent.com/YangYuS8/project-os-skills/main/scripts/install.sh | bash -s -- --mode project --dest . --agents all
+
+Before running commands, briefly explain what files will be created or changed. After installation, summarize the installed files and suggest the next edit to PROJECT_RULES.md.
+```
+
+More copy-paste prompts are available in [`docs/install-with-agent.md`](docs/install-with-agent.md).
+
+### Manual: install into the current project for mainstream agents
 
 Run this inside the project you want agents to work on:
 
@@ -31,7 +55,7 @@ curl -fsSL https://raw.githubusercontent.com/YangYuS8/project-os-skills/main/scr
 
 This installs project-local guidance for common agent styles, including `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `CODEX.md`, Cursor rule files, Windsurf rule files, and `OPENCODE.md`.
 
-### Install native skills for Hermes-like agents
+### Manual: install native skills for Hermes-like agents
 
 ```bash
 git clone https://github.com/YangYuS8/project-os-skills.git
@@ -51,7 +75,7 @@ By default, this copies skills to:
 bash scripts/install.sh --mode all --dest /path/to/project --agents all
 ```
 
-See [`docs/quickstart.md`](docs/quickstart.md), [`docs/agent-compatibility.md`](docs/agent-compatibility.md), and [`docs/usage-with-hermes.md`](docs/usage-with-hermes.md).
+See [`docs/quickstart.md`](docs/quickstart.md), [`docs/install-with-agent.md`](docs/install-with-agent.md), [`docs/agent-compatibility.md`](docs/agent-compatibility.md), and [`docs/usage-with-hermes.md`](docs/usage-with-hermes.md).
 
 ## Why this exists
 
@@ -118,6 +142,7 @@ project-os-skills/
 │   ├── philosophy.md
 │   ├── skill-pack-design.md
 │   ├── quickstart.md
+│   ├── install-with-agent.md
 │   ├── agent-compatibility.md
 │   └── usage-with-hermes.md
 └── examples/
